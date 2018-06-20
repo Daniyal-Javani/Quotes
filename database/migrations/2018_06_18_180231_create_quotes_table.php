@@ -15,6 +15,9 @@ class CreateQuotesTable extends Migration
     {
         Schema::create('quotes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('text');
+            $table->unsignedBigInteger('views');
+            $table->boolean('tweeted')->default(FALSE);
             $table->timestamps();
         });
     }
