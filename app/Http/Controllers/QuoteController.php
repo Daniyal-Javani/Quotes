@@ -42,7 +42,7 @@ class QuoteController extends Controller
      */
     public function store(StoreQuote $request)
     {
-        Quote::create(request(['text']));
+        \Auth::user()->quotes()->create(request(['text']));
         $request->session()->flash('status', 'Task was successful!');
         return redirect()->home();
     }

@@ -12,4 +12,12 @@ class Quote extends Model
      * @var array
      */
     protected $fillable = ['text'];
+
+    /**
+     * Get the user that owns the quote.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

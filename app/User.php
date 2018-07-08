@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the quotes for the user.
+     */
+    public function quotes()
+    {
+        return $this->hasMany('App\Quote');
+    }
 }
