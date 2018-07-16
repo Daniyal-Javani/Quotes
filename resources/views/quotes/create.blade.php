@@ -15,11 +15,25 @@
                             <label for="text" class="col-sm-4 col-form-label text-md-right">{{ __('Text') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="text" class="form-control{{ $errors->has('text') ? ' is-invalid' : '' }}" name="text" value="{{ old('text') }}" required autofocus></textarea>
+                                <textarea id="text" class="form-control{{ $errors->has('text') ? ' is-invalid' : '' }}" name="text"required autofocus>{{ old('text') }}</textarea>
 
                                 @if ($errors->has('text'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('text') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="author" class="col-sm-4 col-form-label text-md-right">{{ __('Author') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="author" class="form-control{{ $errors->has('author') ? ' is-invalid' : '' }}" name="author" value="{{ old('author') }}" required autofocus>
+
+                                @if ($errors->has('author'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('author') }}</strong>
                                     </span>
                                 @endif
                             </div>

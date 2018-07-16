@@ -20,6 +20,8 @@ class CreateQuotesTable extends Migration
             $table->boolean('tweeted')->default(FALSE);
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('author_id');
+            $table->foreign('author_id')->references('id')->on('authors');
             $table->timestamps();
         });
     }

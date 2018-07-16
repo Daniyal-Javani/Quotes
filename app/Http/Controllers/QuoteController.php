@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Quote;
+use App\Author;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreQuote;
 
@@ -42,7 +43,13 @@ class QuoteController extends Controller
      */
     public function store(StoreQuote $request)
     {
-        \Auth::user()->quotes()->create(request(['text']));
+        $author = Author::firstOrCreate(['name' => $request->author]);
+        
+        $quote = new Quote;
+        $quote->text = $request->text;
+        $quote->author()->associate($author);
+        $quote->user()->associate(\Auth::user());
+        $quote->save();
         $request->session()->flash('status', 'Task was successful!');
         return redirect()->home();
     }
