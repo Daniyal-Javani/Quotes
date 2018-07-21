@@ -22,6 +22,8 @@ class CreateQuotesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('author_id');
             $table->foreign('author_id')->references('id')->on('authors');
+            $table->unsignedInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

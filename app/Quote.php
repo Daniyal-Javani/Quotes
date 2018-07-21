@@ -28,4 +28,12 @@ class Quote extends Model
     {
         return $this->belongsTo('App\Author');
     }
+
+    /**
+     * Get the author that owns the quote.
+     */
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
 }

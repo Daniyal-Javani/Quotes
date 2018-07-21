@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Quote;
 use App\Author;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreQuote;
 
@@ -32,7 +33,9 @@ class QuoteController extends Controller
      */
     public function create()
     {
-        return view('quotes.create');
+        $categories = Category::where('parent_id', 0)->get();
+        $subcategories_of_first_category = Category::where('parent_id', 1)->get();
+        return view('quotes.create')->with('categories', $categories);
     }
 
     /**

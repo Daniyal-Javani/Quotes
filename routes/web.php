@@ -23,3 +23,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('quotes', 'QuoteController');
+
+Route::get('/categories/subcategories/{category}', 'CategoryController@subcategories')->name('categories.subcategories');
