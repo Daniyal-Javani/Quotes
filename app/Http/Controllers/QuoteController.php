@@ -52,6 +52,7 @@ class QuoteController extends Controller
         $quote->text = $request->text;
         $quote->author()->associate($author);
         $quote->user()->associate(\Auth::user());
+        $quote->category()->associate($request->subcategory);
         $quote->save();
         $request->session()->flash('status', 'Task was successful!');
         return redirect()->home();
