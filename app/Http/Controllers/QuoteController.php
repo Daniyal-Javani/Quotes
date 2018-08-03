@@ -34,7 +34,6 @@ class QuoteController extends Controller
     public function create()
     {
         $categories = Category::where('parent_id', 0)->get();
-        $subcategories_of_first_category = Category::where('parent_id', 1)->get();
         return view('quotes.create')->with('categories', $categories);
     }
 
@@ -55,7 +54,7 @@ class QuoteController extends Controller
         $quote->category()->associate($request->subcategory);
         $quote->save();
         $request->session()->flash('status', 'Task was successful!');
-        return redirect()->home();
+        return redirect()->route('quotes.index');
     }
 
     /**
@@ -91,7 +90,7 @@ class QuoteController extends Controller
     {
         $quote->text = $request->text;
         $quote->save();
-        return redirect()->action('QuoteController@index');
+        return redirect()->route('quotes.index');
     }
 
     /**
@@ -103,6 +102,7 @@ class QuoteController extends Controller
     public function destroy(Quote $quote)
     {
         $quote->delete();
-        return redirect()->action('QuoteController@index');
+        \Session::flash('status', 'Task was successful!');
+        return redirect()->route('quotes.index');
     }
 }

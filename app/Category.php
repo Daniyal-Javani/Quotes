@@ -11,7 +11,7 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'parent_id'];
 
     /**
      * Get the categories for the author.

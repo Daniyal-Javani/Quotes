@@ -8,7 +8,7 @@
                 <div class="card-header">Edit quote</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('quotes.store') }}/{{ $quote->id }}" aria-label="{{ __('Login') }}">
+                    <form method="POST" action="{{ route('quotes.store') }}/{{ $quote->id }}" aria-label="{{ __('Create quote') }}">
                         @csrf
                         {{ method_field('PUT') }}
                         <div class="form-group row">

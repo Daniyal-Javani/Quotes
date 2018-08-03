@@ -11,17 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-	if(Auth::check()) {
-        return redirect()->route('home');
-    } else {
-	    return view('welcome');
-	}
-});
+Route::get('/', ['middleware' => 'guest', function() {
+	return view('welcome');
+}]);
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('quotes', 'QuoteController');
 
+
+// Ajaxes
 Route::get('/categories/subcategories/{category}', 'CategoryController@subcategories')->name('categories.subcategories');
+
+// Resources
+Route::resource('quotes', 'QuoteController');
+Route::resource('categories', 'CategoryController');
+Route::resource('admin/categories', 'Admin\CategoryController', ['as' => 'admin']);
+Route::resource('admin', 'Admin\DashboardController');

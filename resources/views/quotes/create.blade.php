@@ -8,7 +8,7 @@
                 <div class="card-header">Create quote</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('quotes.store') }}" aria-label="{{ __('Login') }}">
+                    <form method="POST" action="{{ route('quotes.store') }}" aria-label="{{ __('Create quote') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -44,6 +44,7 @@
 
                             <div class="col-md-6">
                                 <select id="category" class="form-control{{ $errors->has('category') ? ' is-invalid' : '' }}" name="category" value="{{ old('category') }}" required>
+                                    <option value="0">Select a Category</option>
                                     @foreach($categories as $category)
                                         @if (old('category') == $category->id)
                                               <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
@@ -67,6 +68,7 @@
                             <div class="col-md-6">
 
                                 <select id="subcategory" class="form-control{{ $errors->has('Subcategory') ? ' is-invalid' : '' }}" name="subcategory" value="{{ old('subcategory') }}" required>
+                                    <option value="0">Select a Category</option>
                                 </select>
 
                                 @if ($errors->has('subcategory'))
@@ -94,29 +96,38 @@
 
 @section('scripts')
     <script>
-        $.getJSON("{{ route('categories.subcategories', '') }}/" + "{{ old('category', 1) }}", function(j){
-                console.log(j);
-                var options = '';
-                  for (var i = 0; i < j.length; i++) {
-                    var oldSubcategory = {{ old('subcategory', 1) }};
+        var options = '';
+        if ($("select#category").val() == 0) {
+            options += '<option value="0">Select a Category</option>';
+            $("select#subcategory").html(options);
+        } else {
+            $.getJSON("{{ route('categories.subcategories', '') }}/" + "{{ old('category') }}", function(j){
+                for (var i = 0; i < j.length; i++) {
+                    var oldSubcategory = {{ old('subcategory', 0) }};
                     if (j[i].id == oldSubcategory) {
                         options += '<option selected value="' + j[i].id + '">' + j[i].name + '</option>';
                     } else {
                         options += '<option value="' + j[i].id + '">' + j[i].name + '</option>';
                     }
-                  }
-                  $("select#subcategory").html(options);
-            })
+                }
+                $("select#subcategory").html(options);
+            });
+        }
         $(function(){
             $("select#category").change(function(){
-                $.getJSON("{{ route('categories.subcategories', '') }}/" + $(this).val(), function(j){
-                    var options = '';
-                      for (var i = 0; i < j.length; i++) {
-                        {{ old('subcategory') }}
-                        options += '<option value="' + j[i].id + '">' + j[i].name + '</option>';
-                      }
-                      $("select#subcategory").html(options);
-                })
+                var options = '';
+                if ($(this).val() == 0) {
+                    options += '<option value="0">Select a Category</option>';
+                    $("select#subcategory").html(options);
+                } else {
+                    $.getJSON("{{ route('categories.subcategories', '') }}/" + $(this).val(), function(j){
+                          for (var i = 0; i < j.length; i++) {
+                            {{ old('subcategory') }}
+                            options += '<option value="' + j[i].id + '">' + j[i].name + '</option>';
+                          }
+                          $("select#subcategory").html(options);
+                    })
+                }
             })
         })
     </script>
