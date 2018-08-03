@@ -34,4 +34,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Quote');
     }
+
+    /**
+     * Check if the user is admin
+     * @return boolean admin status
+     */
+    public function isAdmin()
+    {        
+        return $this->admin === 1;
+    }
 }

@@ -26,5 +26,5 @@ Route::get('/categories/subcategories/{category}', 'CategoryController@subcatego
 // Resources
 Route::resource('quotes', 'QuoteController');
 Route::resource('categories', 'CategoryController');
-Route::resource('admin/categories', 'Admin\CategoryController', ['as' => 'admin']);
-Route::resource('admin', 'Admin\DashboardController');
+Route::resource('admin/categories', 'Admin\CategoryController', ['as' => 'admin'])->middleware('is_admin');
+Route::resource('admin', 'Admin\DashboardController')->middleware('is_admin');
