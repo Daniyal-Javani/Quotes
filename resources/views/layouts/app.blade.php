@@ -54,6 +54,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('quotes.index') }}">{{ __('My Quotes') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('users.edit', Auth::user()->id) }}">{{ __('Edit Profile') }}</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -76,17 +79,6 @@
                 </div>
             </div>
         </nav>
-        @if (session('status'))
-            <div class="container">
-                <div class="row justify-content-center pt-4">
-                    <div class="col-md-8">
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
         <main class="py-4">
             @yield('content')
         </main>

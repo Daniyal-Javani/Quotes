@@ -7,6 +7,11 @@
             <div class="card">
                 <div class="card-header">My Quotes <a href="{{ route('quotes.create') }}" class="btn btn-success float-right">Add quote</a></div>
                 <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <table>
                         <tbody>
                             @foreach ($quotes as $quote)
