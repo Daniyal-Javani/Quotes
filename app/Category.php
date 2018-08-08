@@ -28,4 +28,12 @@ class Category extends Model
     {
         return $this->hasMany('App\Category', 'parent_id');
     }
+
+    /**
+     * Get the categories for the author.
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\User')->withTimestamps();;
+    }
 }

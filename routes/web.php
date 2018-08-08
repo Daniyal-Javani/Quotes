@@ -29,3 +29,4 @@ Route::resource('categories', 'CategoryController');
 Route::resource('admin/categories', 'Admin\CategoryController', ['as' => 'admin'])->middleware('is_admin');
 Route::resource('admin', 'Admin\DashboardController')->middleware('is_admin');
 Route::resource('users', 'UserController');
+Route::resource('interests', 'InterestController');

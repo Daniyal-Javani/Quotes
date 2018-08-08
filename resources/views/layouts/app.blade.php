@@ -55,6 +55,9 @@
                                 <a class="nav-link" href="{{ route('quotes.index') }}">{{ __('My Quotes') }}</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('interests.index') }}">{{ __('My Interests') }}</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('users.edit', Auth::user()->id) }}">{{ __('Edit Profile') }}</a>
                             </li>
                             <li class="nav-item dropdown">

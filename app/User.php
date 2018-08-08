@@ -37,6 +37,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the categories for the user.
+     */
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category')->withTimestamps();;
+    }
+
+    /**
      * Check if the user is admin
      * @return boolean admin status
      */
