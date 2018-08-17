@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Quote;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categoryIds = \Auth::user()->categories()->pluck('categories.id');
+        $quotes = Quote::whereIn('category_id', $categoryIds)->orderBy('created_at', 'desc')->get();
+        return view('home')->with('quotes', $quotes);;
     }
 }

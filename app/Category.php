@@ -36,4 +36,12 @@ class Category extends Model
     {
         return $this->belongsToMany('App\User')->withTimestamps();;
     }
+
+    /**
+     * Get quotes for the category.
+     */
+    public function quotes()
+    {
+        return $this->hasMany('App\Quote');
+    }
 }
