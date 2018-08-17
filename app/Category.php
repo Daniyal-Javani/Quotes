@@ -16,21 +16,21 @@ class Category extends Model
     /**
      * Get the categories for the author.
      */
-    public function categories()
-    {
-        return $this->hasMany('App\Quote');
-    }
-
-    /**
-     * Get the categories for the author.
-     */
     public function subcategories()
     {
         return $this->hasMany('App\Category', 'parent_id');
     }
 
     /**
-     * Get the categories for the author.
+     * Get the parent category.
+     */
+    public function parent()
+    {
+        return $this->belongsTo('App\Category', 'parent_id');
+    }
+
+    /**
+     * Get the categories for the user.
      */
     public function users()
     {

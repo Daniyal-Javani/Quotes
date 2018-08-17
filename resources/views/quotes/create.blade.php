@@ -68,7 +68,7 @@
                             <div class="col-md-6">
 
                                 <select id="subcategory" class="form-control{{ $errors->has('Subcategory') ? ' is-invalid' : '' }}" name="subcategory" value="{{ old('subcategory') }}" required>
-                                    <option value="0">Select a Category</option>
+                                    <option value="0">Select a Sub Category</option>
                                 </select>
 
                                 @if ($errors->has('subcategory'))

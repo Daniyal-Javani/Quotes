@@ -21,7 +21,7 @@
                                         <a href="{{ route('quotes.edit', $quote->id) }}" class="btn btn-warning" role="button">Edit </a>
                                     </td>
                                     <td class="col-md-2">
-                                        <form method="POST" action="{{ route('quotes.update', $quote->id) }}" class="form-inline" style="display: inline; ">
+                                        <form method="POST" action="{{ route('quotes.destroy', $quote->id) }}" class="form-inline" style="display: inline; ">
                                             @csrf
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-danger">
@@ -36,6 +36,7 @@
                 </div>
             </div>
             <div class="row justify-content-center">{{ $quotes->links() }}</div>
+        </div>
     </div>
 </div>
 @endsection

@@ -76,7 +76,8 @@ class QuoteController extends Controller
      */
     public function edit(Quote $quote)
     {
-        return view('quotes.edit')->with('quote', $quote);
+        $categories = Category::where('parent_id', 0)->get();
+        return view('quotes.edit')->with('quote', $quote)->with('categories', $categories);
     }
 
     /**
@@ -88,8 +89,13 @@ class QuoteController extends Controller
      */
     public function update(StoreQuote $request, Quote $quote)
     {
+        $author = Author::firstOrCreate(['name' => $request->author]);
+        
         $quote->text = $request->text;
-        $quote->save();
+        $quote->author()->associate($author);
+        $quote->category()->associate($request->subcategory);
+        $quote->update();
+
         return redirect()->route('quotes.index');
     }
 
