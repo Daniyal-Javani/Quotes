@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
+use Cog\Contracts\Love\Liker\Models\Liker as LikerContract;
+use Cog\Laravel\Love\Liker\Models\Traits\Liker;
 
-class User extends Authenticatable
+class User extends Authenticatable implements LikerContract
 {
-    use Notifiable, HasApiTokens;
+    use Notifiable, HasApiTokens, Liker;
 
     /**
      * The attributes that are mass assignable.

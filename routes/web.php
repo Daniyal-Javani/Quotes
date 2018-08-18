@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Ajaxes
 Route::get('/categories/subcategories/{category}', 'CategoryController@subcategories')->name('categories.subcategories');
+Route::get('/quotes/like/{quote}', 'QuoteController@like')->name('quotes.like');
 
 // Resources
 Route::resource('quotes', 'QuoteController');

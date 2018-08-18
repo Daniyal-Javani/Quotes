@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cog\Contracts\Love\Likeable\Models\Likeable as LikeableContract;
+use Cog\Laravel\Love\Likeable\Models\Traits\Likeable;
 
-class Quote extends Model
+class Quote extends Model implements LikeableContract
 {
+    use Likeable;
     /**
      * The attributes that are mass assignable.
      *

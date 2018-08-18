@@ -111,4 +111,18 @@ class QuoteController extends Controller
         \Session::flash('status', 'Task was successful!');
         return redirect()->route('quotes.index');
     }
+
+    /**
+     * Like or unlike the specified quote
+     *
+     * @param  \App\Quote  $quote
+     * @return \Illuminate\Http\Response
+     */
+    public function like(Quote $quote)
+    {
+        $quote->toggleLikeBy(\Auth::user()->id);
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }
 }
