@@ -25,6 +25,9 @@
                 </div>
             @endforeach
         </div>
+
+        @include('layouts.sidebar')
+
     </div>
 </div>
 @endsection
