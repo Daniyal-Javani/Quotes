@@ -26,6 +26,6 @@ class HomeController extends Controller
     {
         $categoryIds = \Auth::user()->categories()->pluck('categories.id');
         $quotes = Quote::whereIn('category_id', $categoryIds)->orderBy('created_at', 'desc')->get();
-        return view('home')->with('quotes', $quotes);;
+        return view('home')->with('quotes', $quotes);
     }
 }

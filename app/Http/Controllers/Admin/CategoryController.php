@@ -103,7 +103,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        \Session::flash('status', 'Task was successful!');
+        session()->flash('status', 'Task was successful!');
         return redirect()->route('admin.categories.index');
     }
 }

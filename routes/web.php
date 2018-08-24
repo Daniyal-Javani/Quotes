@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', ['middleware' => 'guest', function() {
-	return view('welcome');
-}]);
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -31,3 +27,4 @@ Route::resource('admin/categories', 'Admin\CategoryController', ['as' => 'admin'
 Route::resource('admin', 'Admin\DashboardController')->middleware('is_admin');
 Route::resource('users', 'UserController');
 Route::resource('interests', 'InterestController');
+Route::resource('/', 'WelcomeController');

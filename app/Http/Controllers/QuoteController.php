@@ -108,7 +108,7 @@ class QuoteController extends Controller
     public function destroy(Quote $quote)
     {
         $quote->delete();
-        \Session::flash('status', 'Task was successful!');
+        session()->flash('status', 'Task was successful!');
         return redirect()->route('quotes.index');
     }
 
