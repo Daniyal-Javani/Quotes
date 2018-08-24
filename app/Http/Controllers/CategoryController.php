@@ -12,9 +12,11 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($categoryName)
     {
-        //
+        $category = Category::where('name', $categoryName)->first();
+        $quotes = $category->quotes()->paginate(5);
+        return view('home')->with('quotes', $quotes);
     }
 
     /**

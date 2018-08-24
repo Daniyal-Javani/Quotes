@@ -6,7 +6,7 @@
         <div class="card-body">
             <ul class="list-group">
                 @foreach($categories as $category)
-                    <li class="list-group-item">{{ $category->name }}</li>
+                    <li class="list-group-item"><a href="{{ route('categories.quotesByName', $category->name) }}">{{ $category->name }}</a></li>
                 @endforeach
             </ul>
 

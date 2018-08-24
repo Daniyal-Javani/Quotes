@@ -15,10 +15,11 @@
                             @else
                                 <i style="font-weight: 100" class="far fa-heart"></i>
                             @endif
-                        </a><span style="margin-left: 5px;">{{ $quote->likesCount }}</span>
+                        </a>
                     </div>
                 </div>
             @endforeach
+            <div class="row justify-content-center">{{ $quotes->links() }}</div>
         </div>
     </div>
 </div>

@@ -24,6 +24,7 @@
                     </div>
                 </div>
             @endforeach
+            <div class="row justify-content-center">{{ $quotes->links() }}</div>
         </div>
 
         @include('layouts.sidebar')

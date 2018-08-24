@@ -14,6 +14,7 @@
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('categories/{category}', 'CategoryController@index')->name('categories.quotesByName');
 
 
 // Ajaxes
@@ -22,7 +23,6 @@ Route::get('/quotes/like/{quote}', 'QuoteController@like')->name('quotes.like');
 
 // Resources
 Route::resource('quotes', 'QuoteController');
-Route::resource('categories', 'CategoryController');
 Route::resource('admin/categories', 'Admin\CategoryController', ['as' => 'admin'])->middleware('is_admin');
 Route::resource('admin', 'Admin\DashboardController')->middleware('is_admin');
 Route::resource('users', 'UserController');

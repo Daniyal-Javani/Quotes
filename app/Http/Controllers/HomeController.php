@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $categoryIds = \Auth::user()->categories()->pluck('categories.id');
-        $quotes = Quote::whereIn('category_id', $categoryIds)->orderBy('created_at', 'desc')->get();
+        $quotes = Quote::whereIn('category_id', $categoryIds)->orderBy('created_at', 'desc')->paginate(5);
         return view('home')->with('quotes', $quotes);
     }
 }
