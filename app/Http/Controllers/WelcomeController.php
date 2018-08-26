@@ -25,7 +25,7 @@ class WelcomeController extends Controller
     public function index()
     {
         $quotes = Quote::orderBy('created_at', 'desc')->paginate(5);
-        return view('welcome')->with('quotes', $quotes);;
+        return view('welcome')->with('quotes', $quotes);
     }
 
     /**

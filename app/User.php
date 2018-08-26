@@ -43,7 +43,7 @@ class User extends Authenticatable implements LikerContract
      */
     public function categories()
     {
-        return $this->belongsToMany('App\Category')->withTimestamps();;
+        return $this->belongsToMany('App\Category')->withTimestamps();
     }
 
     /**
