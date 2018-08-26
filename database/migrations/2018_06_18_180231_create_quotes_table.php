@@ -15,7 +15,7 @@ class CreateQuotesTable extends Migration
     {
         Schema::create('quotes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('text');
+            $table->text('text');
             $table->unsignedBigInteger('views')->default(0);
             $table->boolean('tweeted')->default(FALSE);
             $table->unsignedInteger('user_id');
