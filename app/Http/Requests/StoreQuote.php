@@ -26,6 +26,7 @@ class StoreQuote extends FormRequest
         return [
             'text' => 'required|max:255|min:5',
             'author' => 'required|max:30|min:3',
+            'image' => 'image'
         ];
     }
 }

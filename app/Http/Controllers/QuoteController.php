@@ -52,6 +52,10 @@ class QuoteController extends Controller
         $quote->author()->associate($author);
         $quote->user()->associate(\Auth::user());
         $quote->category()->associate($request->subcategory);
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images');
+            $quote->image = $imagePath;
+        }
         $quote->save();
         $request->session()->flash('status', 'Task was successful!');
         return redirect()->route('quotes.index');
@@ -94,6 +98,10 @@ class QuoteController extends Controller
         $quote->text = $request->text;
         $quote->author()->associate($author);
         $quote->category()->associate($request->subcategory);
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images');
+            $quote->image = $imagePath;
+        }
         $quote->update();
 
         return redirect()->route('quotes.index');

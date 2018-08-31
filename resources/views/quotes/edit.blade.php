@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Create quote</div>
+                <div class="card-header">Edit quote</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('quotes.update', $quote->id) }}" aria-label="{{ __('Create quote') }}">
+                    <form method="POST" action="{{ route('quotes.update', $quote->id) }}" aria-label="{{ __('Create quote') }}" enctype="multipart/form-data">
                         @csrf
                         {{ method_field('PUT') }}
                         <div class="form-group row">
@@ -75,6 +75,27 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('subcategory') }}</strong>
                                     </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="image" class="col-sm-4 col-form-label text-md-right">{{ __('Image') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="image" type="file" class="form-control-file{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image">
+
+                                @if ($errors->has('image'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="right">
+                                @if(isset($quote->image))
+                                    <img src="/storage/{{ $quote->image }}" width="100px">
+                                @else
+                                    <img src="/storage/images/default.jpg" width="100px">
                                 @endif
                             </div>
                         </div>
