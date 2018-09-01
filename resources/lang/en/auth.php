@@ -15,5 +15,15 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'Password'   => 'Password',
+    'E-Mail Address'   => 'E-Mail Address',
+    'Remember Me'   => 'Remember Me',
+    'Forgot Your Password?'   => 'Forgot Your Password?',
+    'Login'   => 'Login',
+    'Name'   => 'Name',
+    'Confirm Password'   => 'Confirm Password',
+    'Edit'   => 'Edit',
+    'Register'   => 'Register',
+    'Submit'   => 'Submit',
 
 ];

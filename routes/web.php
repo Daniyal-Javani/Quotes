@@ -28,3 +28,8 @@ Route::resource('admin', 'Admin\DashboardController')->middleware('is_admin');
 Route::resource('users', 'UserController');
 Route::resource('interests', 'InterestController');
 Route::resource('/', 'WelcomeController');
+
+Route::get('/lang/{lang?}',[
+	'uses'=>'LangSwitcherController@LangSwitcher',
+	'as'  => 'lang.switch'
+]);

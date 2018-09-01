@@ -28,6 +28,13 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                <select name="lang" class="form-control" onchange="javascript:handleSelect(this)" style="width:100px;">
+
+                    <option @if(session('locale')=='en') selected="{{Config::get('app.locale')}}" @endif value="{{route('lang.switch',['lang'=>'en'])}}">English</option>
+
+                    <option @if(session('locale')=='fa') selected="selected" @endif value="{{route('lang.switch',['lang'=>'fa'])}}" >{{ __('Farsi') }}</option>
+
+                </select>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -43,23 +50,23 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('auth.Login') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('auth.Register') }}</a>
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('header.Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('quotes.index') }}">{{ __('My Quotes') }}</a>
+                                <a class="nav-link" href="{{ route('quotes.index') }}">{{ __('header.My Quotes') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('interests.index') }}">{{ __('My Interests') }}</a>
+                                <a class="nav-link" href="{{ route('interests.index') }}">{{ __('header.My Interests') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('users.edit', Auth::user()->id) }}">{{ __('Edit Profile') }}</a>
+                                <a class="nav-link" href="{{ route('users.edit', Auth::user()->id) }}">{{ __('header.Edit Profile') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -88,5 +95,10 @@
         </main>
     </div>
     @yield('scripts')
+    <script type="text/javascript">
+        function handleSelect(elm) {
+            window.location = elm.value;
+        }
+    </script>
 </body>
 </html>

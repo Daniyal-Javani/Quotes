@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">My Quotes <a href="{{ route('quotes.create') }}" class="btn btn-success float-right">Add quote</a></div>
+                <div class="card-header">{{ __('quotes.My Quotes') }}<a href="{{ route('quotes.create') }}" class="btn btn-success float-right">{{ __('quotes.Add quote') }}</a></div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -18,14 +18,14 @@
                                 <tr>
                                     <td class="col-md-8">{{ $quote->text }}</td>
                                     <td class="col-md-2">
-                                        <a href="{{ route('quotes.edit', $quote->id) }}" class="btn btn-warning" role="button">Edit </a>
+                                        <a href="{{ route('quotes.edit', $quote->id) }}" class="btn btn-warning" role="button">{{ __('quotes.Edit') }} </a>
                                     </td>
                                     <td class="col-md-2">
                                         <form method="POST" action="{{ route('quotes.destroy', $quote->id) }}" class="form-inline" style="display: inline; ">
                                             @csrf
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-danger">
-                                                Delete
+                                                {{ __('quotes.Delete') }}
                                             </button>
                                         </form>
                                     </td>

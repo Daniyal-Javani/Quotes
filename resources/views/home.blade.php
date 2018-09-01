@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h2>Quotes of your favourite categories</h2>
+            <h2>{{ __('quotes.Quotes of your favourite categories') }}</h2>
             @if (session('status'))
                 <div class="alert alert-success" role="alert">
                     {{ session('status') }}

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">My Interests</div>
+                <div class="card-header">{{ __('quotes.My Interests') }}</div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -13,14 +13,14 @@
                         </div>
                     @endif
                     <div class="col-md-12">
-                        <form method="POST" action="{{ route('interests.store') }}" aria-label="{{ __('Add interest') }}">
+                        <form method="POST" action="{{ route('interests.store') }}" aria-label="{{ __('quotes.Add interest') }}">
                             @csrf
                             <div class="form-group row">
-                                <label for="category" class="col-sm-4 col-form-label text-md-right">{{ __('Category') }}</label>
+                                <label for="category" class="col-sm-4 col-form-label text-md-right">{{ __('quotes.Category') }}</label>
 
                                 <div class="col-md-6">
                                     <select id="category" class="form-control" name="category" required>
-                                        <option value="">Select a Category</option>
+                                        <option value="">{{ __('quotes.Select a Category') }}</option>
                                         @foreach($categories as $category)
                                             @if (old('category') == $category->id)
                                                   <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
@@ -33,12 +33,12 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="subcategory" class="col-sm-4 col-form-label text-md-right">{{ __('Subcategory') }}</label>
+                                <label for="subcategory" class="col-sm-4 col-form-label text-md-right">{{ __('quotes.Subcategory') }}</label>
 
                                 <div class="col-md-6">
 
                                     <select id="subcategory" class="form-control{{ $errors->has('subcategory') ? ' is-invalid' : '' }}" name="subcategory" value="{{ old('subcategory') }}" required>
-                                        <option value="">Select a Category</option>
+                                        <option value="">{{ __('quotes.Select a Category') }}</option>
                                     </select>
 
                                     @if ($errors->has('subcategory'))
@@ -52,7 +52,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary float-right">
-                                        {{ __('Submit') }}
+                                        {{ __('quotes.Submit') }}
                                     </button>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                             @csrf
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-danger">
-                                                Delete
+                                                {{ __('quotes.Delete') }}
                                             </button>
                                         </form>
                                     </td>
